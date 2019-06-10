@@ -34,6 +34,11 @@ library(“kernelCpp”)
 
 ?multi_kernelmatrix
 
+## 卸载
+remove.packages("kernelCpp",.libPaths())
+
+
+
 ## 相关链接:
 
 RcppParallel:
