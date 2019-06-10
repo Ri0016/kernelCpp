@@ -7,9 +7,25 @@
 需要电脑中有c++环境,
 在R中安装 Rcpp, RcppParallel包.
 
+## 安装:
 
+1. 利用devtools包
 
-## 相关链接
+在R控制台输入命令:
+devtools::install_github("Ri0016/kernelCpp")
+
+2. 下载zip,通过文件安装
+
+## 使用
+加载:
+
+library(“kernelCpp”)
+
+查看函数说明:
+
+?multi_kernelmatrix
+
+## 相关链接:
 
 RcppParallel:
 https://rcppcore.github.io/RcppParallel/
