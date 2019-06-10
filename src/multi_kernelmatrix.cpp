@@ -368,7 +368,7 @@ inline double Cosine_kernel(InputIterator1 begin1,InputIterator2 begin2,
   while(it1 != end1){
     double d1 = *it1++;
     double d2 = *it2++;
-    double pi = pi = 3.14159265358979323846;
+    double pi = 3.14159265358979323846;
     double tx =abs((d1-d2)/h);
     double tp =0;
     if ( tx >= 1 ) {
