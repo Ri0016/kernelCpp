@@ -28,7 +28,7 @@ devtools::install_github("Ri0016/kernelCpp")
 ## 使用
 加载:
 
-library(“kernelCpp”)
+library("kernelCpp")
 
 查看函数说明:
 
