@@ -28,11 +28,16 @@ devtools::install_github("Ri0016/kernelCpp")
 ## 使用
 加载:
 
-library(“kernelCpp”)
+library("kernelCpp")
 
 查看函数说明:
 
 ?multi_kernelmatrix
+
+## 卸载
+remove.packages("kernelCpp",.libPaths())
+
+
 
 ## 相关链接:
 
