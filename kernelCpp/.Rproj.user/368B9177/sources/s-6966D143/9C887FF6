@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1560134508843.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "947347165",
+    "id" : "9C887FF6",
+    "lastKnownWriteTime" : 1560134451,
+    "last_content_update" : 1560134451,
+    "path" : "~/Desktop/测试用/R/kernelCpp/src/RcppExports.cpp",
+    "project_path" : "src/RcppExports.cpp",
+    "properties" : {
+    },
+    "read_only" : true,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "cpp"
+}

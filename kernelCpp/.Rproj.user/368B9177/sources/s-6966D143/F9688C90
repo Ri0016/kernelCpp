@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1559873687446.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "F9688C90",
+    "lastKnownWriteTime" : 1560141712,
+    "last_content_update" : 1560141712,
+    "path" : "~/Desktop/测试用/R/kernelCpp/man/multi_kernelmatrix.Rd",
+    "project_path" : "man/multi_kernelmatrix.Rd",
+    "properties" : {
+        "cursorPosition" : "29,0",
+        "scrollLine" : "11",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_doc"
+}
