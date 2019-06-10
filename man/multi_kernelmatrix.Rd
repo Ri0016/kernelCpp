@@ -88,14 +88,187 @@ remove.packages("kernelCpp",.libPaths())
 
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+##compare with functions implemented in R
 
-## The function is currently defined as
-function (x)
+Epanechnikov <- function (x)
 {
+
+  xPh<- abs(x)
+  xPh[xPh <=1] <-1
+  xPh[xPh>1] <- 0
+  kernalX <- 0.75*(1-x^2)*xPh
+  return(kernalX)
+}
+
+k_kernel<-function(h,x){
+  #h smoothing parameters
+  #X regressors
+  p=dim(x)[2]
+  temp=1
+  for(j in 1:p){
+    xx=outer(x[,j],x[,j],'-')
+    k_value=Epanechnikov(xx/h)
+    temp=temp*k_value/h
   }
+  temp=temp#-diag(diag(temp))
+  return(temp)
+}
+epan_kernel<-function(h,x){
+  #h smoothing parameters
+  #X regressors
+  p=dim(x)[2]
+  temp=1
+  for(j in 1:p){
+    xx=outer(x[,j],x[,j],'-')
+    k_value=0.75*(1-(xx/h)^2)*(abs(xx/h) < 1)
+    temp=temp*k_value/h
+  }
+  temp=temp#-diag(diag(temp))
+  return(temp)
+}
+quartic_kernel<-function(h,x){
+  #h smoothing parameters
+  #X regressors
+  p=dim(x)[2]
+  temp=1
+  for(j in 1:p){
+    xx=outer(x[,j],x[,j],'-')
+    k_value=0.9375*(1-(xx/h)^2)^2*(abs(xx/h) < 1)
+    temp=temp*k_value/h
+  }
+  temp=temp#-diag(diag(temp))
+  return(temp)
+}
+triweight_kernel<-function(h,x){
+  #h smoothing parameters
+  #X regressors
+  p=dim(x)[2]
+  temp=1
+  for(j in 1:p){
+    xx=outer(x[,j],x[,j],'-')
+    k_value=1.09375*(1-(xx/h)^2)^3*(abs(xx/h) < 1)
+    temp=temp*k_value/h
+  }
+  temp=temp#-diag(diag(temp))
+  return(temp)
+}
+triangle_kernel<-function(h,x){
+  #h smoothing parameters
+  #X regressors
+  p=dim(x)[2]
+  temp=1
+  for(j in 1:p){
+    xx=outer(x[,j],x[,j],'-')
+    k_value=(1-abs(xx/h))*(abs(xx/h) < 1)
+    temp=temp*k_value/h
+  }
+  temp=temp#-diag(diag(temp))
+  return(temp)
+}
+
+cosine_kernel<-function(h,x){
+  #h smoothing parameters
+  #X regressors
+  p=dim(x)[2]
+  temp=1
+  for(j in 1:p){
+    xx=outer(x[,j],x[,j],'-')
+    k_value=pi/4*cos(pi*(xx/h)/2)*(abs(xx/h) < 1)
+    temp=temp*k_value/h
+  }
+  temp=temp#-diag(diag(temp))
+  return(temp)
+}
+
+normal_kernel<-function(h,x){
+  #h smoothing parameters
+  #X regressors
+  p=dim(x)[2]
+  temp=1
+  for(j in 1:p){
+    xx=outer(x[,j],x[,j],'-')
+    k_value=dnorm(xx/h)
+    temp=temp*k_value/h
+  }
+  temp=temp#-diag(diag(temp))
+  return(temp)
+}
+n=300
+p=5
+h =0.1
+X <- matrix(runif(n*p),n,p)
+e <- rnorm(n)
+#epan
+k_kernel(h,X) -> r1
+multi_kernelmatrix(X,h,"e") -> r2
+epan_kernel(h,X) -> r3
+bench::mark(
+  k_kernel(h,X),
+  epan_kernel(h,X),
+  multi_kernelmatrix(X,h,"e"),
+  check = TRUE,
+  relative = TRUE
+)
+sum(abs(r1-r2))
+
+#norm
+normal_kernel(h,X) -> t1
+multi_kernelmatrix(X,h,"g") -> t2
+bench::mark(
+  normal_kernel(h,X),
+  multi_kernelmatrix(X,h,"g"),
+  check = TRUE,
+  relative = TRUE
+)
+sum(abs(t1-t2))
+
+#quartifc
+
+quartic_kernel(h,X) ->q1
+multi_kernelmatrix(X,h,"q") -> q2
+bench::mark(
+  quartic_kernel(h,X),
+  multi_kernelmatrix(X,h,"q"),
+  check = TRUE,
+  relative = TRUE
+)
+sum(abs(q1-q2))
+
+#triweight
+triweight_kernel(h,X) -> tw1
+multi_kernelmatrix(X,h,"triw") -> tw2
+bench::mark(
+  triweight_kernel(h,X),
+  multi_kernelmatrix(X,h,"triw") ,
+  check = TRUE,
+  relative = TRUE
+)
+sum(abs(tw1-tw2))
+mean(abs(tw1-tw2))
+
+#triangle
+triangle_kernel(h,X) -> ta1
+multi_kernelmatrix(X,h,"tria") -> ta2
+bench::mark(
+  triangle_kernel(h,X),
+  multi_kernelmatrix(X,h,"tria") ,
+  check = TRUE,
+  relative = TRUE
+)
+sum(abs(ta1-ta2))
+
+#cosine_kernel
+
+cosine_kernel(h,X) -> c1
+multi_kernelmatrix(X,h,"c") -> c2
+bench::mark(
+  cosine_kernel(h,X),
+  multi_kernelmatrix(X,h,"c"),
+  check = TRUE,
+  relative = TRUE
+)
+sum(abs(c1-c2))
+
 }
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the

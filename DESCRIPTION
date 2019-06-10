@@ -9,6 +9,6 @@ Description: More about what it does (maybe more than one line)
 License: GPL
 Encoding: UTF-8
 LazyData: true
-Imports: Rcpp,RcppParallel
+Imports: Rcpp,RcppParallel,bench
 LinkingTo: Rcpp,RcppParallel
 SystemRequirements: GNU make
