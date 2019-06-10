@@ -1,7 +1,0 @@
-exportPattern("^[[:alpha:]]+")
-
-importFrom("stats", "dnorm")
-useDynLib(kernelCpp)
-importFrom(Rcpp, sourceCpp)
-importFrom(RcppParallel, RcppParallelLibs)
-
