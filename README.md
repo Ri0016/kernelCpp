@@ -12,21 +12,18 @@ install.packages("RcppParallel")
 
 ## 安装:
 
-1.  利用devtools包,在线下载自动安装
+1.  利用devtools包,自动下载安装
 
 install.packages("devtools")
 
 在R控制台输入命令: devtools::install_github("Ri0016/kernelCpp",force =
 TRUE)
 
-1.  下载zip,通过文件离线安装
+2.  手动下载zip,通过文件离线安装
 
 ## 使用
 
-加载:
-
 library("kernelCpp")
-
 
 查看函数说明:
 
