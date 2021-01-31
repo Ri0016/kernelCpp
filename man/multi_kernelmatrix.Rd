@@ -33,13 +33,7 @@ Cosine:kernel = "cosine" or "c";
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
-If you want to remove the diag of result matrix, following the code:
 
-diag(result) <- 0
-
-where the result is the function return value, like:
-
-result = multi_kernelmatrix(X,h,"c")
 
 }
 \value{
@@ -48,7 +42,14 @@ result = multi_kernelmatrix(X,h,"c")
 %%  \item{comp1 }{Description of 'comp1'}
 %%  \item{comp2 }{Description of 'comp2'}
 %% ...
-The return value is a symmetric matrix. The (i,j) element is the product of kernel density  in each dimension between row i and row j of input matrix.
+The return value is a symmetric(if the kernel function is symmetric) matrix.
+The diag is the kernel density of each row of input matrix.
+The other elements, except diag, is the product of kernel density  in each dimension between row i and row j of input matrix.
+
+
+i = j: M[i,i] = 1/h^p*K(X[i,1]/h) * K(X[i,2]/h)*...*K(X[i,p]/h)
+
+i != j: M[i,j] = 1/h^p* K((X[i,1] - X[j,1])/h) * K((X[i,2] - X[j,2])/h) *...*K((X[i,p] - X[j,p])/h)
 
 }
 \references{
