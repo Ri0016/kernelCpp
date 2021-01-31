@@ -21,7 +21,7 @@ install.packages("RcppParallel")
 install.packages("devtools")
 
 在R控制台输入命令:
-devtools::install_github("Ri0016/kernelCpp")
+devtools::install_github("Ri0016/kernelCpp",force = TRUE)
 
 2. 下载zip,通过文件安装
 
