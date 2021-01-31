@@ -1,9 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # kernelCpp
 
 利用RcppParallel,计算核密度矩阵.
