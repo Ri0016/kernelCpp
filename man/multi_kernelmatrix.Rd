@@ -83,10 +83,6 @@ remove.packages("kernelCpp",.libPaths())
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-
-}
 \examples{
 ##compare with functions implemented in R
 
@@ -209,7 +205,9 @@ bench::mark(
   check = TRUE,
   relative = TRUE
 )
-sum(abs(r1-r2))
+
+all.equal(r1,r2)
+all.equal(r1,r3)
 
 #norm
 normal_kernel(h,X) -> t1
@@ -220,7 +218,7 @@ bench::mark(
   check = TRUE,
   relative = TRUE
 )
-sum(abs(t1-t2))
+all.equal(t1,t2)
 
 #quartifc
 
@@ -232,9 +230,10 @@ bench::mark(
   check = TRUE,
   relative = TRUE
 )
-sum(abs(q1-q2))
+all.equal(q1,q2)
 
 #triweight
+
 triweight_kernel(h,X) -> tw1
 multi_kernelmatrix(X,h,"triw") -> tw2
 bench::mark(
@@ -243,8 +242,7 @@ bench::mark(
   check = TRUE,
   relative = TRUE
 )
-sum(abs(tw1-tw2))
-mean(abs(tw1-tw2))
+all.equal(tw1,tw2)
 
 #triangle
 triangle_kernel(h,X) -> ta1
@@ -255,7 +253,7 @@ bench::mark(
   check = TRUE,
   relative = TRUE
 )
-sum(abs(ta1-ta2))
+all.equal(ta1,ta2)
 
 #cosine_kernel
 
@@ -267,7 +265,7 @@ bench::mark(
   check = TRUE,
   relative = TRUE
 )
-sum(abs(c1-c2))
+all.equal(c1,c2)
 
 }
 
