@@ -35,9 +35,19 @@ library("kernelCpp")
 
 remove.packages("kernelCpp",.libPaths())
 
+## 相关链接:
+
+RcppParallel: <https://rcppcore.github.io/RcppParallel/>
+
+一维核估计动态演示: <https://mathisonian.github.io/kde/>
+
+多维核估计: <https://bookdown.org/egarpor/NP-UC3M/kde-ii-mult.html>
+
+不同核函数类别: <https://en.wikipedia.org/wiki/Kernel_(statistics)>
 
 
-## compare with functions implemented in R
+
+## 验证
 
 ```r
 Epanechnikov <- function (x)
@@ -221,13 +231,3 @@ bench::mark(
 )
 all.equal(c1,c2)
 ```
-
-## 相关链接:
-
-RcppParallel: <https://rcppcore.github.io/RcppParallel/>
-
-一维核估计动态演示: <https://mathisonian.github.io/kde/>
-
-多维核估计: <https://bookdown.org/egarpor/NP-UC3M/kde-ii-mult.html>
-
-不同核函数类别: <https://en.wikipedia.org/wiki/Kernel_(statistics)>
