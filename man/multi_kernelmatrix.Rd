@@ -47,7 +47,7 @@ The diag is the kernel density of each row of input matrix.
 The other elements, except diag, is the product of kernel density  in each dimension between row i and row j of input matrix.
 
 
-i = j: M[i,i] = 1/h^p*K(X[i,1]/h) * K(X[i,2]/h)*...*K(X[i,p]/h)
+i = j: M[i,i] = 1/h^p*K(0)^p
 
 i != j: M[i,j] = 1/h^p* K((X[i,1] - X[j,1])/h) * K((X[i,2] - X[j,2])/h) *...*K((X[i,p] - X[j,p])/h)
 
